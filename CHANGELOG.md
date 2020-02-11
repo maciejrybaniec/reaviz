@@ -1,3 +1,6 @@
+# 8.0.2 - 2/11/20
+- [Fix] Fix bar charts https://github.com/framer/motion/issues/384
+
 # 8.0.1 - 2/6/20
 - [Chore] Upgrade deps
 
