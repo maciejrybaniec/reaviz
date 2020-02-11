@@ -23,8 +23,8 @@ const Icon = ({ fill }) => (
   </svg>
 );
 
-storiesOf('Charts|Gauge/Linear', module)
-  .add('Single-Series', () => (
+storiesOf('Charts|Gauge/Linear/Single-Series', module)
+  .add('Simple', () => (
     <div style={{ textAlign: 'center' }}>
       <h2 style={{ color: 'white', margin: 0 }}>Risk Score</h2>
       <LinearGauge
@@ -34,7 +34,42 @@ storiesOf('Charts|Gauge/Linear', module)
       />
     </div>
   ))
-  .add('Multi-Series', () => (
+  .add('Non-Zero Start', () => (
+    <div style={{ textAlign: 'center' }}>
+      <LinearGauge
+        height={30}
+        width={300}
+        data={{ key: 'Risk Score', data: [15, 80] }}
+      />
+    </div>
+  ))
+  .add('Multiple Gauges', () => (
+    <div style={{ textAlign: 'center' }}>
+      <LinearGauge
+        height={15}
+        width={300}
+        data={{ key: 'Step 1', data: [0, 15] }}
+      />
+      <LinearGauge
+        height={15}
+        width={300}
+        data={{ key: 'Step 2', data: [15, 50] }}
+      />
+      <LinearGauge
+        height={15}
+        width={300}
+        data={{ key: 'Step 3', data: [50, 55] }}
+      />
+      <LinearGauge
+        height={15}
+        width={300}
+        data={{ key: 'Step 4', data: [55, 100] }}
+      />
+    </div>
+  ));
+
+storiesOf('Charts|Gauge/Linear/Multi-Series', module)
+  .add('Simple', () => (
     <div style={{ width: '465px', textAlign: 'center' }}>
       <h2 style={{ color: 'white', margin: 0 }}>MIRTE Attack</h2>
       <LinearGauge
