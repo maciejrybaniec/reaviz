@@ -496,6 +496,27 @@ export class Bar extends Component<BarProps, BarState> {
     const extras = constructFunctionProps(this.props, data);
     const transition = this.getTransition(index);
 
+    // UGH: https://github.com/framer/motion/issues/384
+    const initial = {
+      ...initialExit,
+      attrX: initialExit.x,
+      attrY: initialExit.y,
+      fill
+    };
+
+    delete initial.x;
+    delete initial.y;
+
+    const animate = {
+      ...coords,
+      attrX: coords.x,
+      attrY: coords.y,
+      fill
+    };
+
+    delete animate.x;
+    delete animate.y;
+
     return (
       <g ref={this.rect}>
         <motion.rect
@@ -511,9 +532,9 @@ export class Bar extends Component<BarProps, BarState> {
           mask={maskPath}
           rx={rx}
           ry={ry}
-          initial={{ ...initialExit, fill }}
-          animate={{ ...coords, fill }}
-          exit={{ ...initialExit, fill }}
+          initial={initial}
+          animate={animate}
+          exit={initial}
           transition={transition}
           onMouseEnter={bind(this.onMouseEnter, this)}
           onMouseLeave={bind(this.onMouseLeave, this)}
@@ -594,7 +615,9 @@ export class Bar extends Component<BarProps, BarState> {
     const stroke = color(data, barIndex);
     const coords = this.getCoords(data);
     const currentColorShade = active
-      ? chroma(stroke).brighten(activeBrightness).hex()
+      ? chroma(stroke)
+          .brighten(activeBrightness)
+          .hex()
       : stroke;
     const rangeLineColor = (rangeLines && rangeLines.props.color) || stroke;
     const rangeLineColorShade = active

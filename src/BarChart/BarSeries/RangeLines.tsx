@@ -204,15 +204,34 @@ export class RangeLines extends Component<RangeLinesProps> {
     const { height, width } = this.getHeightWidth(rangeLineHeight);
     const delay = this.getDelay();
 
+    // UGH: https://github.com/framer/motion/issues/384
+    const initial = {
+      ...exitProps,
+      attrX: exitProps.x,
+      attrY: exitProps.y
+    };
+
+    delete initial.x;
+    delete initial.y;
+
+    const animate = {
+      ...enterProps,
+      attrX: enterProps.x,
+      attrY: enterProps.y
+    };
+
+    delete animate.x;
+    delete animate.y;
+
     return (
       <motion.rect
         pointerEvents="none"
         fill={color}
         width={width}
         height={height}
-        initial={exitProps}
-        animate={enterProps}
-        exit={exitProps}
+        initial={initial}
+        animate={animate}
+        exit={initial}
         transition={{
           ...DEFAULT_TRANSITION,
           delay
