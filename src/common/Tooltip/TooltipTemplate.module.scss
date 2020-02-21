@@ -1,12 +1,13 @@
 .label {
   font-size: 16px;
   margin-bottom: 3px;
-  color: rgba(255, 255, 255, 1);
+  color: var(--color-on-background);
 }
 
 .value {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-on-background);
+  opacity: 0.7;
 }
 
 .subValue {
