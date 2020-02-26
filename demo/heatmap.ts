@@ -111,7 +111,7 @@ export const heatmapSimpleData = [
 ];
 
 const yearStart = moment().startOf('year');
-const aprilStart = moment().startOf('year').add(3, 'month');
+const marchStart = moment().startOf('year').add(2, 'month');
 
 export const heatmapCalendarData = range(365).map(i => ({
   key: yearStart.clone().add(i, 'days').toDate(),
@@ -134,6 +134,6 @@ export const marchHeatMapData = range(31).map(i => ({
 }));
 
 export const heatmapCalendarOffsetData = range(365).map(i => ({
-  key: aprilStart.clone().add(i, 'days').toDate(),
+  key: marchStart.clone().add(i, 'days').toDate(),
   data: randomNumber(0, 50)
 }));
