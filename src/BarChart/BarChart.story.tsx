@@ -11,7 +11,7 @@ import {
   multiCategory,
   randomNumber,
   medDateData,
-  numberData,
+  histogramNumberData,
   nonZeroCategoryData,
   durationCategoryData,
   binnedDateData,
@@ -281,7 +281,7 @@ storiesOf('Charts|Bar Chart/Vertical/Histogram', module)
     'Numbers',
     () => {
       const binSize = number('Bin Size', 1);
-      const data = object('Data', numberData);
+      const data = object('Data', histogramNumberData);
 
       return (
         <HistogramBarChart
@@ -449,7 +449,7 @@ storiesOf('Charts|Bar Chart/Vertical/Multi Series', module)
           'Opened Only': binnedDatePositiveOnly,
           'Closed Only': binnedDateNegativeOnly
         },
-        binnedDateData
+        binnedDateData as any
       );
 
       const rx = number('rx', 0);
@@ -874,7 +874,7 @@ storiesOf('Charts|Bar Chart/Horizontal/Multi Series', module)
           'Opened Only': binnedDatePositiveOnly,
           'Closed Only': binnedDateNegativeOnly
         },
-        binnedDateData
+        binnedDateData as any
       );
 
       return (

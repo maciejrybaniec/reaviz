@@ -107,9 +107,7 @@ storiesOf('Charts|Brush', module)
             }
           />
         }
-        series={
-          <BarSeries tooltip={null} />
-        }
+        series={<BarSeries tooltip={null} />}
       />
     );
   })
